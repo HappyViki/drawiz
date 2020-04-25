@@ -16,7 +16,6 @@ vanilla.bind({
     orientation: 4
 });
 //on button click
-vanilla.result('base64').then(function(blob) {
-    el2.src = blob;
-		this.Content = this.sanitizer.bypassSecurityTrustUrl(result);
+vanilla.result('base64').then(function(data) {
+    el2.src = data;
 });
