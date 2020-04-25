@@ -1,0 +1,32 @@
+.container{
+	width: 600px;
+	margin: 0 auto;
+	padding: 8px;
+	border: 1px solid black;
+}
+.container > section{
+	display: inline-block;
+	width: 250px;
+	padding: 8px;
+	border: 1px solid black;
+	vertical-align: top;
+}
+.answer{
+	margin: 8px;
+}
+.textArea, .drawingArea{
+	border: 1px solid black;
+	width: 100%;
+}
+.textArea{
+	max-width: 100%;
+}
+button.question{
+	display: block;
+	font-size: 24px;
+	background: none;
+	border: none;
+}
+button.question:hover{
+	background: #eee;
+}
