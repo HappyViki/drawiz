@@ -1,0 +1,10 @@
+body{
+	text-align: center;
+}
+#questions button{
+	display: inline-block;
+	font-size: 32px;
+}
+.answered{
+	border-color: green;
+}
