@@ -10,6 +10,7 @@
     "gh-pages": "^2.2.0"
   },
   "scripts": {
+    "deploy": "node deploy.js"
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
