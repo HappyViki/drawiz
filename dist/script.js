@@ -108,3 +108,10 @@ document.querySelectorAll("#uploadQuestions img").forEach(
 		() => saveCrop(question)
 	)
 )
+document.querySelector("form").addEventListener(
+		'change',
+		function(e) {
+			e.preventDefault()
+			document.querySelector(".content").innerHTML = "Thank you for submitting your answers!"
+		}
+	)
