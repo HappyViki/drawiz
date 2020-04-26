@@ -19,11 +19,13 @@ const quizQuestions = document.getElementById('quizQuestions')
 const uploadQuestions = document.getElementById('uploadQuestions')
 
 quizQuestions.innerHTML = quiz.map(
-	question => `<h5 class="quiz-question" style="max-width: 540px;">${question.name}</h5><hr/>`
+	(question, i) => `<p class="quiz-question" style="max-width: 540px;">
+	<b>${i+1}.</b> ${question.name}
+	</p><hr/>`
 ).join("")
 
 uploadQuestions.innerHTML = quiz.map(
-	question => `<div class="upload-question card mb-3" style="max-width: 540px;">
+	(question, i) => `<div class="upload-question card mb-3" style="max-width: 540px;">
 		<div class="row no-gutters">
 			<div class="col-4 mb-md-0 p-md-4">
 				<img src="" alt="Answer" class="card-img"/>
@@ -31,11 +33,11 @@ uploadQuestions.innerHTML = quiz.map(
 			<div class="col-8">
 				<div class="card-body">
 					<button class="btn btn-warning mb-md-3">Answer with cropped image</button>
-					<h5 class="card-title">
+					<p class="card-title">
 						<label for="name">
-							${question.name}
+							<b>${i+1}.</b> ${question.name}
 						</label>
-					</h5>
+					</p>
 					<input
 						type="text"
 						name="${question.id}"
