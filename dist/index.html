@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Drawiz</title>
+		<link rel="stylesheet" href="croppie.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="content">
+			<h1>Drawiz</h1>
+			<h2>Quiz</h2>
+			<div id="quizQuestions"></div>
+			<hr/>
+			<h2>Upload</h2>
+			<input
+				id="file"
+				type="file"
+				accept="image/*"
+				multiple="false"
+			/>
+			<div id="croppie"></div>
+			<form action="action.html" method="post">
+				<div id="uploadQuestions"></div>
+			  <div>
+			    <input type="submit" value="Submit Answers">
+			  </div>
+			</form>
+		</div>
+		<script src="croppie.js" charset="utf-8"></script>
+		<script src="script.js" charset="utf-8"></script>
+	</body>
+</html>

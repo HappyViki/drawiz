@@ -1,0 +1,9 @@
+.content{
+	width: 300px;
+	margin: auto;
+}
+.upload-question img{
+	display: block;
+	width: 100px;
+	height: 100px;
+}
