@@ -54,7 +54,6 @@ uploadQuestions.innerHTML = quiz.map(
 const croppie = new Croppie(
 	document.getElementById('croppie'),
 	{
-		enableOrientation: true,
 		enableExif: true,
 		viewport: {
 			width: 100,
@@ -62,12 +61,10 @@ const croppie = new Croppie(
 		},
 		boundary: { width: 300, height: 300 },
 		showZoomer: true,
-		enableOrientation: true
 	}
 );
 croppie.bind({
 		url: imgUrl,
-		orientation: 4
 });
 
 const selectFile = file => {

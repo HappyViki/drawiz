@@ -4,7 +4,8 @@
   "description": "Quizzes that let you draw your answer.",
   "main": "dist/script.js",
   "dependencies": {
-    "croppie": "^2.6.4"
+    "croppie": "^2.6.4",
+    "exif-js": "^2.3.0"
   },
   "devDependencies": {
     "gh-pages": "^2.2.0"
