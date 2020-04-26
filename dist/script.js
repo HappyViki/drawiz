@@ -1,19 +1,16 @@
-const imgUrl = 'https://github.com/HappyViki/drawiz/static/antoine-dautry-05A-kdOH6Hw-unsplash.jpg'
+const imgUrl = 'https://raw.githubusercontent.com/HappyViki/drawiz/master/static/antoine-dautry-05A-kdOH6Hw-unsplash.jpg'
 const quiz = [
 	{
 		id: "questionone",
-		name: "Question One",
-		base64Data: ""
+		name: "A car averages 27 miles per gallon. If gas costs $4.04 per gallon, which of the following is closest to how much the gas would cost for this car to travel 2,727 typical miles? Show your work.",
 	},
 	{
 		id: "questiontwo",
-		name: "Question Two",
-		base64Data: ""
+		name: "What is the value of x when 2x + 3 = 3x – 4? Graph it.",
 	},
 	{
 		id: "questionthree",
-		name: "Question Three",
-		base64Data: ""
+		name: "In the standard (x,y) coordinate plane, 3 of the vertices of a rectangle are (-1,-1), (2,1), and (6,-5). What is the 4th vertex of the rectangle?",
 	}
 ]
 let imageReady = true
@@ -22,22 +19,33 @@ const quizQuestions = document.getElementById('quizQuestions')
 const uploadQuestions = document.getElementById('uploadQuestions')
 
 quizQuestions.innerHTML = quiz.map(
-	question => `<div class="quiz-question">${question.name}</div>`
+	question => `<h5 class="quiz-question" style="max-width: 540px;">${question.name}</h5><hr/>`
 ).join("")
 
 uploadQuestions.innerHTML = quiz.map(
-	question => `<div class="upload-question">
-		<label for="name">
-			${question.name}
-		</label>
-		<input
-			type="text"
-			name="${question.id}"
-			id="${question.id}"
-			required
-			hidden
-		/>
-		<img src="" alt="Click here to crop answer" />
+	question => `<div class="upload-question card mb-3" style="max-width: 540px;">
+		<div class="row no-gutters">
+			<div class="col-4 mb-md-0 p-md-4">
+				<img src="" alt="Answer" class="card-img"/>
+			</div>
+			<div class="col-8">
+				<div class="card-body">
+					<button class="btn btn-warning mb-md-3">Answer with cropped image</button>
+					<h5 class="card-title">
+						<label for="name">
+							${question.name}
+						</label>
+					</h5>
+					<input
+						type="text"
+						name="${question.id}"
+						id="${question.id}"
+						required
+						hidden
+					/>
+				</div>
+			</div>
+		</div>
 	</div>`
 ).join("")
 
@@ -69,7 +77,6 @@ const selectFile = file => {
 	reader.onload = function(e){
 		imageReady = false
 		if( e.target.readyState == FileReader.DONE) {
-			console.log(e.target.result);
 			imageReady = true
 			croppie.bind({
 			    url: e.target.result,
@@ -79,7 +86,7 @@ const selectFile = file => {
 	}
 }
 
-const saveCrop = question => {
+const saveCrop = (question,index) => {
 	croppie.result(
 		{
 			type:'base64',
@@ -89,29 +96,31 @@ const saveCrop = question => {
 			data => {
 				if (!imageReady) return
 				question.classList.add("answered")
-				question.parentNode.querySelector("input").value = data
-				question.parentNode.querySelector("img").src = data
-				question.parentNode.querySelector("img").alt = "answer"
+				document.querySelectorAll(".upload-question input")[index].value = data
+				document.querySelectorAll(".upload-question img")[index].src = data
+				document.querySelectorAll(".upload-question img")[index].alt = "answer"
 			}
 		);
 }
 
-document.querySelectorAll("#file").forEach(
-	question => question.addEventListener(
+document.querySelector("#file").addEventListener(
 		'change',
-		function() {selectFile(this.files[0])}
+		function() {
+			const file = this.files[0]
+			document.querySelector("#fileName").innerText = file.name
+			selectFile(file)
+		}
 	)
-)
-document.querySelectorAll("#uploadQuestions img").forEach(
-	question => question.addEventListener(
+document.querySelectorAll(".upload-question .btn").forEach(
+	(question,index) => question.addEventListener(
 		'click',
-		() => saveCrop(question)
+		() => saveCrop(question,index)
 	)
 )
 document.querySelector("form").addEventListener(
 		'submit',
 		function(e) {
 			e.preventDefault()
-			document.querySelector(".content").innerHTML = "Thank you for submitting your answers!"
+			document.querySelector("#done").innerHTML = "Thank you for filling in your answers!"
 		}
 	)
