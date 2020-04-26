@@ -1,4 +1,4 @@
-const imgUrl = 'antoine-dautry-05A-kdOH6Hw-unsplash.jpg'
+const imgUrl = 'https://github.com/HappyViki/drawiz/static/antoine-dautry-05A-kdOH6Hw-unsplash.jpg'
 const quiz = [
 	{
 		id: "questionone",
