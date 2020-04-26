@@ -109,7 +109,7 @@ document.querySelectorAll("#uploadQuestions img").forEach(
 	)
 )
 document.querySelector("form").addEventListener(
-		'change',
+		'submit',
 		function(e) {
 			e.preventDefault()
 			document.querySelector(".content").innerHTML = "Thank you for submitting your answers!"
